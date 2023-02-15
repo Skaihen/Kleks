@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .scrollbar {
+        width: calc(100% + min(0.4rem, 0.7rem));
+        height: calc(100% + min(0.4rem, 0.7rem));
+        overflow: auto;
+        transition: 150ms ease-in;
+    }
+    .scrollbar:hover {
+        width: 100%;
+        height: 100%;
+        transition: 200ms ease-out;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: min(0.4rem, 0.7rem);
+        height: min(0.4rem, 0.7rem);
+        background: transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        border-radius: 100vh;
+        background: hsla(var(--sf) / 0.6);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: hsla(var(--sf) / 0.5);
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:active {
+        background: hsla(var(--sf) / 0.8);
+    }
+
+    .scrollbar::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    .active {
+        color: hsl(var(--af));
+        font-weight: bold;
+    }
+
+    .folderIcon {
+        -webkit-mask-image: url(/icons/defaultFolderIcons/folder.svg);
+        mask-image: url(/icons/defaultFolderIcons/folder.svg);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        background: hsl(var(--p));
+    }
+
+    .folderIcon.expanded {
+        -webkit-mask-image: url(/icons/defaultFolderIcons/folder-open.svg);
+        mask-image: url(/icons/defaultFolderIcons/folder-open.svg);
+    }
+
+    .chevronIcon {
+        -webkit-mask-image: url(/icons/defaultFolderIcons/chevron-right.svg);
+        mask-image: url(/icons/defaultFolderIcons/chevron-right.svg);
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        background: hsl(var(--bc) / 0.6);
+    }
+
+    .chevronIcon.expanded {
+        -webkit-mask-image: url(/icons/defaultFolderIcons/chevron-down.svg);
+        mask-image: url(/icons/defaultFolderIcons/chevron-down.svg);
+    }
+
+    .fileIcon {
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        background: hsl(var(--p));
+    }
+}

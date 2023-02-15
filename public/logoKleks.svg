@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 64 97" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="d" x1="10%" x2="0%" y1="10%" y2="100%">
+            <stop stop-color="#BBBE64" offset="0" />
+            <stop stop-color="#8D903C" offset="1" />
+        </linearGradient>
+        <linearGradient id="e" x1="10%" x2="0%" y1="10%" y2="100%">
+            <stop stop-color="#C0C5C1" offset="0" />
+            <stop stop-color="#B7BF97" offset="1" />
+        </linearGradient>
+        <linearGradient id="c" x1="10%" x2="0%" y1="10%" y2="100%">
+            <stop stop-color="#443850" offset="0" />
+            <stop offset="1" />
+        </linearGradient>
+        <linearGradient id="b" x1="10%" x2="0%" y1="10%" y2="100%">
+            <stop stop-color="#7D8491" offset="0" />
+            <stop stop-color="#2A2D32" offset="1" />
+        </linearGradient>
+        <radialGradient id="a">
+            <stop stop-color="#3a3a3a" offset="0" />
+            <stop stop-color="transparent" offset=".45" />
+        </radialGradient>
+    </defs>
+    <polygon points="32 0 32 24.2 0 12.2" fill="url(#e)" stroke="#0F0A0A" stroke-linejoin="round" stroke-width=".2" />
+    <polygon points="32 0 32 24.2 64 12.2" fill="url(#d)" stroke="#0F0A0A" stroke-linejoin="round" stroke-width=".2" />
+    <polygon points="0 12 32 84 32 24" fill="url(#c)" stroke="#0F0A0A" stroke-linejoin="round" stroke-width=".2" />
+    <polygon points="64 12 32 84 32 24" fill="url(#b)" stroke="#0F0A0A" stroke-linejoin="round" stroke-width=".2" />
+    <polygon points="16 94 32 100 48 94 32 88" fill="url(#a)" />
+</svg>
