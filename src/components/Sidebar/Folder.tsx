@@ -29,17 +29,6 @@ export default function Folder(props: FolderProps) {
         )
     })
 
-    const prueba = async () => {
-        const test = await createMemo(async () => {
-            return await resolveResource(
-                `resources/themes/iconPacks/defaultFileIcons/${
-                    isExpanded() ? "folder-open" : "folder"
-                }.svg`
-            )
-        })
-        return test
-    }
-
     const { setPath } = pathStorage
 
     return (
