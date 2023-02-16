@@ -1,7 +1,4 @@
-<script lang="ts">
-    import { onMount } from "svelte"
-
-    import { Terminal } from "xterm"
+/*     import { Terminal } from "xterm"
     import { FitAddon } from "xterm-addon-fit"
     import { WebglAddon } from "xterm-addon-webgl"
 
@@ -87,9 +84,8 @@
         themeStore.subscribe(() => {
             setTermTheme(term)
         })
-    })
-</script>
+    }) */
 
-<svelte:window on:resize={handleTermResize} />
-
-<div bind:this={terminalElement} class="rounded-lg shadow-lg overflow-hidden" />
+export default function Terminal() {
+    return <div class="rounded-lg shadow-lg bg-base-100 overflow-hidden" />
+}

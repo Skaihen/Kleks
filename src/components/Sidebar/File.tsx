@@ -31,7 +31,7 @@ export default function File(props: FileProps) {
             <img class="w-3 h-3 mr-1 flex-shrink-0" />
             <p
                 class={`whitespace-nowrap${
-                    currentPath() === props.path ? " active" : ""
+                    currentPath() === props.path ? " activeFile" : ""
                 }`}
             >
                 {props.name}

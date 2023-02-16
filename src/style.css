@@ -38,7 +38,7 @@
         background: transparent;
     }
 
-    .active {
+    .activeFile {
         color: hsl(var(--af));
         font-weight: bold;
     }

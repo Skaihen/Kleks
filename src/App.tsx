@@ -2,6 +2,7 @@ import { Navbar } from "./components"
 import { CodeEditor } from "./components/CodeEditor"
 import { Sidebar } from "./components/Sidebar"
 import { themeStorage } from "./components/Storages"
+import { Terminal } from "./components/Terminal"
 
 export default function App() {
     const { currentTheme } = themeStorage
@@ -14,7 +15,7 @@ export default function App() {
             <Navbar />
             <Sidebar />
             <CodeEditor />
-            <div></div>
+            <Terminal />
         </div>
     )
 }
