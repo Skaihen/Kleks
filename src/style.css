@@ -42,42 +42,4 @@
         color: hsl(var(--af));
         font-weight: bold;
     }
-
-    .folderIcon {
-        -webkit-mask-image: url(/icons/defaultFolderIcons/folder.svg);
-        mask-image: url(/icons/defaultFolderIcons/folder.svg);
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        background: hsl(var(--p));
-    }
-
-    .folderIcon.expanded {
-        -webkit-mask-image: url(/icons/defaultFolderIcons/folder-open.svg);
-        mask-image: url(/icons/defaultFolderIcons/folder-open.svg);
-    }
-
-    .chevronIcon {
-        -webkit-mask-image: url(/icons/defaultFolderIcons/chevron-right.svg);
-        mask-image: url(/icons/defaultFolderIcons/chevron-right.svg);
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        background: hsl(var(--bc) / 0.6);
-    }
-
-    .chevronIcon.expanded {
-        -webkit-mask-image: url(/icons/defaultFolderIcons/chevron-down.svg);
-        mask-image: url(/icons/defaultFolderIcons/chevron-down.svg);
-    }
-
-    .fileIcon {
-        -webkit-mask-repeat: no-repeat;
-        mask-repeat: no-repeat;
-        -webkit-mask-size: contain;
-        mask-size: contain;
-        background: hsl(var(--p));
-    }
 }
