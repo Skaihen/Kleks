@@ -3,11 +3,6 @@ import { pathStorage } from "../Storages"
 import { resolveResource } from "@tauri-apps/api/path"
 import { readTextFile } from "@tauri-apps/api/fs"
 
-const resourcePath = await resolveResource(
-    "resources/themes/iconPacks/defaultFileIcons/fileIcons.json"
-)
-const fileIconsJson = JSON.parse(await readTextFile(resourcePath))
-
 type FileProps = {
     name: string
     path: string
@@ -16,6 +11,11 @@ type FileProps = {
 type FileIconsType = {
     [key: string]: string
 }
+
+const resourcePath = await resolveResource(
+    "resources/themes/iconPacks/defaultFileIcons/fileIcons.json"
+)
+const fileIconsJson = JSON.parse(await readTextFile(resourcePath))
 
 const fileIcons: FileIconsType = fileIconsJson
 

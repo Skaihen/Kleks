@@ -29,7 +29,8 @@
                 "scope": [
                     "$APPCONFIG",
                     "$APPCONFIG/*",
-                    "$RESOURCE/resources/**/*"
+                    "$RESOURCE/resources/**/*",
+                    "$RESOURCE/resources/*"
                 ]
             },
             "dialog": {
@@ -44,6 +45,12 @@
                         "cmd": "powershell",
                         "args": true
                     }
+                ]
+            },
+            "protocol": {
+                "asset": true,
+                "assetScope": [
+                    "$RESOURCE/resources/*"
                 ]
             }
         },
@@ -83,7 +90,7 @@
             }
         },
         "security": {
-            "csp": null
+            "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost"
         },
         "updater": {
             "active": false
