@@ -1,6 +1,6 @@
 import { createSignal, onMount } from "solid-js"
 import { pathStorage } from "../Storages"
-import { resolveResource } from "@tauri-apps/api/path"
+import { resolve, resourceDir } from "@tauri-apps/api/path"
 import { readTextFile } from "@tauri-apps/api/fs"
 
 type FileProps = {
@@ -12,10 +12,15 @@ type FileIconsType = {
     [key: string]: string
 }
 
-const resourcePath = await resolveResource(
-    "resources/themes/iconPacks/defaultFileIcons/fileIcons.json"
+const iconsPath = await resolve(
+    await resourceDir(),
+    "resources",
+    "themes",
+    "iconPacks",
+    "defaultFileIcons",
+    "fileIcons.json"
 )
-const fileIconsJson = JSON.parse(await readTextFile(resourcePath))
+const fileIconsJson = JSON.parse(await readTextFile(iconsPath))
 
 const fileIcons: FileIconsType = fileIconsJson
 
