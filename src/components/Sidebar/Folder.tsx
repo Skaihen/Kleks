@@ -12,13 +12,6 @@ type FolderProps = {
     expanded?: boolean
 }
 
-/* const folderIconPath = await resolveResource(
-    `resources/themes/iconPacks/defaultFileIcons/${
-        isExpanded() ? "folder-open" : "folder"
-    }.svg`
-)
-*/
-
 const iconsPath = await resolve(
     await resourceDir(),
     "resources",
@@ -45,9 +38,7 @@ export default function Folder(props: FolderProps) {
                     )
                 )
             )
-        })
 
-        createEffect(async () => {
             setFolderIcon(
                 convertFileSrc(
                     await resolve(

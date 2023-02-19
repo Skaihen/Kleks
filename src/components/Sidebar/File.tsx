@@ -1,7 +1,8 @@
 import { createSignal, onMount } from "solid-js"
 import { pathStorage } from "../Storages"
-import { resolve, resourceDir } from "@tauri-apps/api/path"
+import { extname, resolve, resourceDir } from "@tauri-apps/api/path"
 import { readTextFile } from "@tauri-apps/api/fs"
+import { convertFileSrc } from "@tauri-apps/api/tauri"
 
 type FileProps = {
     name: string
@@ -17,23 +18,42 @@ const iconsPath = await resolve(
     "resources",
     "themes",
     "iconPacks",
-    "defaultFileIcons",
-    "fileIcons.json"
+    "defaultFileIcons"
 )
-const fileIconsJson = JSON.parse(await readTextFile(iconsPath))
 
-const fileIcons: FileIconsType = fileIconsJson
+const fileIcons: FileIconsType = JSON.parse(
+    await readTextFile(await resolve(iconsPath, "fileIcons.json"))
+)
 
 export default function File(props: FileProps) {
     const { currentPath } = pathStorage
 
     const [fileIcon, setFileIcon] = createSignal("")
 
-    let fileExt = props.name.slice(props.name.lastIndexOf(".") + 1)
+    onMount(async () => {
+        let fileExt = ""
+        try {
+            fileExt = await extname(props.path)
+        } catch (error) {
+            fileExt = "fallback"
+        }
+
+        if (fileExt in fileIcons) {
+            setFileIcon(
+                convertFileSrc(
+                    await resolve(iconsPath, `${fileIcons[fileExt]}.svg`)
+                )
+            )
+        } else {
+            setFileIcon(
+                convertFileSrc(await resolve(iconsPath, "fallback.svg"))
+            )
+        }
+    })
 
     return (
         <div class="ml-4 flex flex-row flex-nowrap items-center cursor-pointer">
-            <img class="w-3 h-3 mr-1 flex-shrink-0" />
+            <img src={fileIcon()} class="w-3 h-3 mr-1 flex-shrink-0" />
             <p
                 class={`whitespace-nowrap${
                     currentPath() === props.path ? " activeFile" : ""
