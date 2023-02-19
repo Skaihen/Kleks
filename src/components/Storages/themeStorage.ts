@@ -1,18 +1,12 @@
 import { createSignal, createRoot } from "solid-js"
-
-const localTheme = localStorage.getItem("localTheme")
+import settingsStorage from "./settingsStorage"
 
 function createThemeStorage() {
-    const [currentTheme, setTheme] = createSignal(
-        localTheme !== null ? localTheme : "dark"
-    )
+    const [currentTheme, setTheme] = createSignal(settingsStorage.get("theme"))
     const changeTheme = (theme: string) => {
+        settingsStorage.setCache("theme", theme)
         setTheme(theme)
-        localStorage.setItem("localTheme", theme)
     }
-    /* createEffect(() => {
-        localStorage.setItem("localTheme", currentTheme)
-    }) */
     return { currentTheme, changeTheme }
 }
 

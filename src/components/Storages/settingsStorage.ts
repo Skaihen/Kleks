@@ -1,5 +1,4 @@
 import { SettingsManager } from "tauri-settings"
-import { createSignal, createRoot } from "solid-js"
 
 type Schema = {
     theme:
@@ -34,41 +33,10 @@ type Schema = {
         | "winter"
 }
 
-/* const settingsManager = new SettingsManager<Schema>(
-  { // defaults
-    theme: 'light',
-    startFullscreen: false
-  },
-  { // options
-    fileName: 'customization-settings'
-  }
-)
+const settingsStorage = new SettingsManager<Schema>({
+    theme: "dark"
+})
 
-// checks whether the settings file exists and created it if not
-// loads the settings if it exists
-settingsManager.initialize().then(() => {
-  // any key other than 'theme' and 'startFullscreen' will be invalid.
-  // theme key will only accept 'dark' or 'light' as a value due to the generic.
-  settingsManager.setCache('theme', 'dark');
-}
+settingsStorage.initialize()
 
-// at a later time
-await settingsManager.syncCache(); */
-
-const localTheme = localStorage.getItem("localTheme")
-
-function createThemeStorage() {
-    const [currentTheme, setTheme] = createSignal(
-        localTheme !== null ? localTheme : "dark"
-    )
-    const changeTheme = (theme: string) => {
-        setTheme(theme)
-        localStorage.setItem("localTheme", theme)
-    }
-    /* createEffect(() => {
-        localStorage.setItem("localTheme", currentTheme)
-    }) */
-    return { currentTheme, changeTheme }
-}
-
-export default createRoot(createThemeStorage)
+export default settingsStorage
