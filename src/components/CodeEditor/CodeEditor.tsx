@@ -30,16 +30,10 @@ import {
     rectangularSelection
 } from "@codemirror/view"
 
-import { createCodeMirror } from "solid-codemirror"
+import { createCodeMirror, createEditorControlledValue } from "solid-codemirror"
 import { vscodeKeymap } from "@replit/codemirror-vscode-keymap"
-
-/*     pathStore.subscribe(async (value) => {
-        try {
-            codeStore.set(await readTextFile(value))
-        } catch (error) {
-            console.log(error)
-        }
-    }) */
+import { createEffect } from "solid-js"
+import { saveFile } from "../../functions/FileOperations"
 
 const baseSetup: Extension = [
     highlightSpecialChars(),
@@ -59,21 +53,37 @@ const baseSetup: Extension = [
         ...vscodeKeymap,
         ...completionKeymap,
         ...historyKeymap,
+        {
+            key: "Ctrl-s",
+            run: () => {
+                saveFile()
+                return true
+            }
+        },
         indentWithTab
     ])
 ]
 
 export default function CodeEditor() {
     const { currentCode, setCode } = codeStorage
+    const { currentPath } = pathStorage
 
-    const { ref: editorRef, createExtension } = createCodeMirror({
-        value: currentCode(),
+    const {
+        editorView,
+        ref: editorRef,
+        createExtension
+    } = createCodeMirror({
         onValueChange: setCode
     })
+    createEditorControlledValue(editorView, currentCode)
 
     createExtension(materialLight)
     createExtension(javascript({ jsx: true, typescript: true }))
     createExtension(baseSetup)
+
+    createEffect(async () => {
+        setCode(await readTextFile(currentPath()))
+    })
 
     return (
         <div class="rounded-lg shadow-lg bg-base-100 overflow-hidden ">
@@ -81,22 +91,3 @@ export default function CodeEditor() {
         </div>
     )
 }
-/* <CodeMirror
-    bind:value={$codeStore}
-    extensions={[
-        keymap.of(defaultKeymap),
-        keymap.of([
-            {
-                key: "Ctrl-s",
-                run: () => {
-                    saveFile()
-                    return true
-                }
-            }
-        ])
-    ]}
-    lang={svelte()}
-    theme={dracula}
-    tabSize={4}
-    class="scrollbar"
-/> */

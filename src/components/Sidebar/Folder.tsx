@@ -28,7 +28,7 @@ export default function Folder(props: FolderProps) {
 
     const { setPath } = pathStorage
 
-    onMount(async () => {
+    onMount(() => {
         createEffect(async () => {
             setChevronIcon(
                 convertFileSrc(
