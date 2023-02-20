@@ -1,6 +1,6 @@
 import { SettingsManager } from "tauri-settings"
 
-type Schema = {
+export type Schema = {
     theme:
         | "light"
         | "dark"
@@ -33,9 +33,14 @@ type Schema = {
         | "winter"
 }
 
-const settingsStorage = new SettingsManager<Schema>({
-    theme: "dark"
-})
+const settingsStorage = new SettingsManager<Schema>(
+    {
+        theme: "dark"
+    },
+    {
+        fileName: "settings"
+    }
+)
 
 settingsStorage.initialize()
 

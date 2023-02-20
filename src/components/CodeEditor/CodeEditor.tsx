@@ -82,7 +82,11 @@ export default function CodeEditor() {
     createExtension(baseSetup)
 
     createEffect(async () => {
-        setCode(await readTextFile(currentPath()))
+        try {
+            setCode(await readTextFile(currentPath()))
+        } catch (error) {
+            console.log(error)
+        }
     })
 
     return (
