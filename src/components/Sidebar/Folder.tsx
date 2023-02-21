@@ -5,6 +5,7 @@ import { FileEntry } from "@tauri-apps/api/fs"
 import { resolve } from "@tauri-apps/api/path"
 import { resourceDir } from "@tauri-apps/api/path"
 import { convertFileSrc } from "@tauri-apps/api/tauri"
+import settingsManager from "../settingsManager"
 
 type FolderProps = {
     name: string
@@ -17,7 +18,7 @@ const iconsPath = await resolve(
     "resources",
     "themes",
     "iconPacks",
-    "defaultFileIcons"
+    await settingsManager.get("iconPack")
 )
 
 export default function Folder(props: FolderProps) {

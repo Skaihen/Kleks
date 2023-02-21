@@ -1,8 +1,5 @@
-import { Navbar } from "./components"
-import { CodeEditor } from "./components/CodeEditor"
-import { Sidebar } from "./components/Sidebar"
+import { CodeEditor, Navbar, Sidebar, Terminal } from "./components"
 import { themeStorage } from "./components/Storages"
-import { Terminal } from "./components/Terminal"
 
 export default function App() {
     const { currentTheme } = themeStorage

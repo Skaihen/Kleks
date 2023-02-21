@@ -3,6 +3,7 @@ import { pathStorage } from "../Storages"
 import { extname, resolve, resourceDir } from "@tauri-apps/api/path"
 import { readTextFile } from "@tauri-apps/api/fs"
 import { convertFileSrc } from "@tauri-apps/api/tauri"
+import settingsManager from "../settingsManager"
 
 type FileProps = {
     name: string
@@ -18,7 +19,7 @@ const iconsPath = await resolve(
     "resources",
     "themes",
     "iconPacks",
-    "defaultFileIcons"
+    await settingsManager.get("iconPack")
 )
 
 const fileIcons: FileIconsType = JSON.parse(
@@ -31,11 +32,12 @@ export default function File(props: FileProps) {
     const [fileIcon, setFileIcon] = createSignal("")
 
     onMount(async () => {
-        let fileExt = ""
+        let fileExt: string
+
         try {
             fileExt = await extname(props.path)
         } catch (error) {
-            fileExt = "fallback"
+            fileExt = "notFound"
         }
 
         if (fileExt in fileIcons) {

@@ -31,17 +31,19 @@ export type Schema = {
         | "night"
         | "coffee"
         | "winter"
+    iconPack: string
 }
 
-const settingsStorage = new SettingsManager<Schema>(
+const settingsManager = new SettingsManager<Schema>(
     {
-        theme: "dark"
+        theme: "dark",
+        iconPack: "defaultFileIcons"
     },
     {
         fileName: "settings"
     }
 )
 
-settingsStorage.initialize()
+await settingsManager.initialize()
 
-export default settingsStorage
+export default settingsManager
