@@ -81,6 +81,6 @@ onMount(async () => {
     })
 })
 
-export default function Terminal() {
+export default function AppTerminal() {
     return <div class="rounded-lg shadow-lg bg-base-100 overflow-hidden" />
 }

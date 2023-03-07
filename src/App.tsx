@@ -1,4 +1,4 @@
-import { CodeEditor, Navbar, Sidebar, Terminal } from "./components"
+import { CodeEditor, Navbar, Sidebar, AppTerminal } from "./components"
 import { themeStorage } from "./components/Storages"
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
             <Navbar />
             <Sidebar />
             <CodeEditor />
-            <Terminal />
+            <AppTerminal />
         </div>
     )
 }
