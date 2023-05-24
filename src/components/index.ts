@@ -1,4 +1,4 @@
-export { Navbar } from "./Navbar"
 export { CodeEditor } from "./CodeEditor"
+export { Navbar } from "./Navbar"
 export { Sidebar } from "./Sidebar"
-export { AppTerminal } from "./AppTerminal"
+export { AppTerminal } from "./Terminal"
